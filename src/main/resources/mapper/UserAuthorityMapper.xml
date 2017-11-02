@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.company.project.dao.UserAuthorityMapper">
+    
+    <resultMap id="userAuthorityResult" type="UserAuthority">  
+	    <id property="user.id" column="user.id"/>  
+	    <result property="user.username" column="user.username"/>  
+	    <result property="user.password" column="user.password"/>  
+	    <result property="user.nickName" column="user.nickName"/>  
+	    <result property="user.sex" column="user.sex"/> 
+	    <result property="user.registerDate" column="user.registerDate"/> 
+	    
+	    <collection property="authorityList" ofType="Authority">  
+	        <id property="id" column="authority.id"/>  
+	        <result property="name" column="authority.name"/>  
+	    </collection> 
+	     
+	</resultMap>   
+    
+    <sql id="userAuthorityColumns">
+         a.id  as "user.id"
+        ,a.username as "user.username"
+        ,a.password as "user.password"
+        ,a.nick_name as "user.nickName"
+        ,a.sex as "user.sex"
+        ,a.register_date as "user.registerDate"
+        ,auth.id  as  "authority.id"
+        ,auth.name  as  "authority.name"
+    </sql>
+    <sql id="userAuthorityJoins">
+        left join user_authority ua on a.id = ua.user_id
+        left join authority auth on ua.authority_id = auth.id
+    </sql>
+    
+    <select id="getByUserId" resultMap="userAuthorityResult">
+        SELECT 
+        <include refid="userAuthorityColumns"/>
+        FROM user a
+        <include refid="userAuthorityJoins"/>
+        WHERE a.id = #{userId}
+    </select>
+  
+  
+</mapper>
