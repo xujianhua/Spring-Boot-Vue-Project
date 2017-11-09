@@ -20,6 +20,9 @@ public class User {
     @Column(name = "register_date")
     private Date registerDate;
     
+    @Column(name = "last_password_reset_date")
+    private Date lastPasswordResetDate;
+    
    /* @Transient
     private String token;*/
     
@@ -106,4 +109,12 @@ public class User {
     public void setRegisterDate(Date registerDate) {
         this.registerDate = registerDate;
     }
+
+	public Date getLastPasswordResetDate() {
+		return lastPasswordResetDate;
+	}
+
+	public void setLastPasswordResetDate(Date lastPasswordResetDate) {
+		this.lastPasswordResetDate = lastPasswordResetDate;
+	}
 }

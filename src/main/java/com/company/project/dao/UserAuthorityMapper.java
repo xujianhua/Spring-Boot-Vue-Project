@@ -7,5 +7,5 @@ import com.company.project.model.UserAuthority;
 public interface UserAuthorityMapper {
 	
 	UserAuthority getByUserId(@Param("userId") Integer userId);
-	
+	UserAuthority getByUserName(@Param("userName") String userName);
 }

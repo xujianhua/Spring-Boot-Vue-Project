@@ -39,6 +39,13 @@
         <include refid="userAuthorityJoins"/>
         WHERE a.id = #{userId}
     </select>
-  
+    
+    <select id="getByUserName" resultMap="userAuthorityResult">
+        SELECT 
+        <include refid="userAuthorityColumns"/>
+        FROM user a
+        <include refid="userAuthorityJoins"/>
+        WHERE a.username = #{userName}
+    </select>
   
 </mapper>

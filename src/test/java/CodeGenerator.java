@@ -4,6 +4,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.mybatis.generator.api.MyBatisGenerator;
 import org.mybatis.generator.config.*;
 import org.mybatis.generator.internal.DefaultShellCallback;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -37,6 +38,9 @@ public class CodeGenerator {
     private static final String DATE = new SimpleDateFormat("yyyy/MM/dd").format(new Date());//@date
 
     public static void main(String[] args) {
+    	/*BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+    	String a= encoder.encode("123456");*/
+    	
         genCode("user_authority");
         //genCodeByCustomModelName("输入表名","输入自定义Model名称");
     }
